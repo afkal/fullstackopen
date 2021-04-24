@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
 
-const Button = ({handkleClick}) => {
-  return (
-    <div>
-      <button onClick={handkleClick}>next anecdote</button>
-    </div>
-  )
-}
+const Button = ({handkleClick, text}) => <button onClick={handkleClick}>{text}</button>
 
 const App = () => {
   const anecdotes = [
@@ -19,17 +13,39 @@ const App = () => {
   ]
 
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState([0,0,0,0,0,0])
+  const [maxVotes, setMax] = useState(0)
 
   const randomizeAnecdote = () => {
     let rand = Math.floor(Math.random() * 6);
     setSelected(rand)
   }
 
-  console.log(selected);
+  const setVote = () => {
+    const copy = [...votes]
+    copy[selected] += 1
+    var max = votes.reduce(function(a, b) {
+      return Math.max(a, b);
+    });
+    if(copy[selected] >= max) {
+      setMax(selected)
+    }
+    console.log('Max', max)
+    setVotes(copy)
+  }
+
+  console.log('Selected', selected);
+  console.log('Votes', votes)
+  console.log('Max votes', maxVotes)
   return (
     <div>
-      {anecdotes[selected]}
-      <Button handkleClick = {randomizeAnecdote}/>
+      <h1>Anecdote of the day</h1>
+      <div>{anecdotes[selected]}</div>
+      <Button handkleClick = {setVote} text = "vote"/>
+      <Button handkleClick = {randomizeAnecdote} text = "next anecdote"/>
+      <h1>Anecdote with most votes</h1>
+      <div>{anecdotes[maxVotes]}</div>
+      <div>has {votes[maxVotes]} votes</div>
     </div>
   )
 }
