@@ -8,12 +8,20 @@ const PersonForm = ({persons, setPersons,  name, setName}) => {
   }
 
   const handleFormSubmit = (event) => {
-    const personObject = {
-      name: name
-    }
+
     event.preventDefault();
-    setPersons(persons.concat(personObject))
-    //
+
+    const names = persons.map(person => person.name)
+
+    // Check if name already exists
+    if(names.includes(name)) {
+      window.alert(`Name ${name} already exists`);
+    } else {
+      const personObject = {
+        name: name
+      }
+      setPersons(persons.concat(personObject))
+    }
   }
 
   return (
