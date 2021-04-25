@@ -1,10 +1,15 @@
 import React from 'react'
 
-const PersonForm = ({persons, setPersons,  name, setName}) => {
+const PersonForm = ({persons, setPersons,  name, setName, number, setNumber}) => {
 
-  const handleChange = (event) => {
+  const handleNameChange = (event) => {
     console.log(event.target.value)
     setName(event.target.value)
+  }
+
+  const handleNumberChange = (event) => {
+    console.log(event.target.value)
+    setNumber(event.target.value)
   }
 
   const handleFormSubmit = (event) => {
@@ -18,7 +23,8 @@ const PersonForm = ({persons, setPersons,  name, setName}) => {
       window.alert(`Name ${name} already exists`);
     } else {
       const personObject = {
-        name: name
+        name: name,
+        number: number
       }
       setPersons(persons.concat(personObject))
     }
@@ -28,7 +34,10 @@ const PersonForm = ({persons, setPersons,  name, setName}) => {
     <form onSubmit = {handleFormSubmit}>
       <div>
         name: <input
-        onChange = {handleChange}
+        onChange = {handleNameChange}
+        />
+      number: <input
+        onChange = {handleNumberChange}
         />
       </div>
       <div>
