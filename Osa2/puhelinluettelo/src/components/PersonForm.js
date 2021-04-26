@@ -1,14 +1,15 @@
 import React from 'react'
+import axios from 'axios'
 
 const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, setVisible}) => {
 
   const handleNameChange = (event) => {
-    console.log(event.target.value)
+    //console.log(event.target.value)
     setName(event.target.value)
   }
 
   const handleNumberChange = (event) => {
-    console.log(event.target.value)
+    //console.log(event.target.value)
     setNumber(event.target.value)
   }
 
@@ -21,13 +22,19 @@ const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, set
     // Check if name already exists
     if(names.includes(name)) {
       window.alert(`Name ${name} already exists`);
+
     } else {
-      const personObject = {
-        name: name,
-        number: number
-      }
-      setPersons(persons.concat(personObject))
-      setVisible(persons.concat(personObject))
+      const personObject = {name, number}
+      axios
+        .post('http://localhost:3001/persons', personObject)
+        .then(response => {
+          console.log(response)
+          setPersons(persons.concat(response.data))
+          setVisible(persons.concat(response.data))
+        })
+
+      //setPersons(persons.concat(personObject))
+      //setVisible(persons.concat(personObject))
     }
   }
 

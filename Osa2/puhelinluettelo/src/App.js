@@ -9,24 +9,13 @@ const App = () => {
 
   const endpoint = 'http://localhost:3001/persons'
 
-  // Test persons
-  /*
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-123456' },
-    { name: 'Ada Lovelace', number: '39-44-5323523' },
-    { name: 'Dan Abramov', number: '12-43-234345' },
-    { name: 'Mary Poppendieck', number: '39-23-6423122' }
-  ])
-  */
-
-  const [persons, setPersons] = useState([])
-
+  const [ persons, setPersons ] = useState([])
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [ visible, setVisible ] = useState([])
 
   useEffect(() => {
-    console.log('effect')
+    console.log('using Effect')
     axios
       .get(endpoint)
       .then(response => {
@@ -36,7 +25,6 @@ const App = () => {
         setVisible(response.data)
       })
   }, [])
-
 
   return (
     <div>
