@@ -17,7 +17,6 @@ const App = () => {
       .getAll()
       .then(response => {
         setPersons(response.data)
-        setPersons(response.data)
         setVisible(response.data)
       })
   }, [])
@@ -39,7 +38,10 @@ const App = () => {
       />
 
       <h3>Numbers</h3>
-      <Persons persons = {visible}/>
+      <Persons
+        persons = {visible}
+        setVisible = {setVisible}
+      />
     </div>
   )
 }
