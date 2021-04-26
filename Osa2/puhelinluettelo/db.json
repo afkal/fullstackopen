@@ -19,6 +19,21 @@
       "name": "Mary Poppendieck",
       "number": "39-23-6423122",
       "id": 4
+    },
+    {
+      "name": "Jaska Jokunen",
+      "number": "358564324231",
+      "id": 5
+    },
+    {
+      "name": "Testi Henkilö",
+      "number": "605889345",
+      "id": 8
+    },
+    {
+      "name": "Ville Veikko",
+      "number": "105889349",
+      "id": 9
     }
   ]
 }

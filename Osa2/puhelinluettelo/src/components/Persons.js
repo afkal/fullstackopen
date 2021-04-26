@@ -8,7 +8,7 @@ const removeItem = ({id, name, setVisible, persons}) => {
       .remove(id)
       .then(response => {
         console.log('removed')
-        setVisible(persons.filter(person => person.id != id))
+        setVisible(persons.filter(person => person.id !== id))
       })
   }
 }
@@ -22,7 +22,7 @@ const Person = ({id, name, number, setVisible, persons}) => {
 const Persons = ({persons, setVisible}) => {
   console.log('calling Persons')
   return(
-    persons.map(person => <Person key={person.id} id={person.id} name={person.name} number={person.number} setVisible={setVisible} persons={persons}/>)
+    persons.map(person => <Person key={person.name} id={person.id} name={person.name} number={person.number} setVisible={setVisible} persons={persons}/>)
   )
 }
 
