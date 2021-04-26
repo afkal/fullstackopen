@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
 import Filter from './components/Filter'
+import personService from './services/persons'
 
 const App = () => {
-
-
-  const endpoint = 'http://localhost:3001/persons'
 
   const [ persons, setPersons ] = useState([])
   const [ newName, setNewName ] = useState('')
@@ -15,12 +12,11 @@ const App = () => {
   const [ visible, setVisible ] = useState([])
 
   useEffect(() => {
-    console.log('using Effect')
-    axios
-      .get(endpoint)
+    console.log('using personService via Effect')
+    personService
+      .getAll()
       .then(response => {
-        console.log('promise fulfilled')
-        console.log(response.data)
+        setPersons(response.data)
         setPersons(response.data)
         setVisible(response.data)
       })
