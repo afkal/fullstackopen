@@ -34,11 +34,6 @@ const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, set
         console.log('change wanted')
         const personObject = {name, number}
 
-        //const newPersons = persons
-        //newPersons[index] = personObject
-        //persons[index] = personObject
-        //console.log('persons updated with: ', persons)
-        //newPersons[]
         // Update database and view
         personService
           .update(currentId, personObject)
@@ -50,8 +45,12 @@ const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, set
             setTimeout(() => {
               setNotification(null)
             }, 3000)
-
-            console.log(response.data)
+          }).catch(error => {
+            setNotification('Error: ' + name + ' does not exist on the server')
+            setTimeout(() => {
+              setNotification(null)
+            }, 3000)
+            console.log('fail')
           })
       }
       else {

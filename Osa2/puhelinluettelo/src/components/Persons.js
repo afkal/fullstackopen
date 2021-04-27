@@ -13,7 +13,14 @@ const removeItem = ({id, name, setVisible, setNotification, persons}) => {
         setTimeout(() => {
           setNotification(null)
         }, 3000)
+      }).catch(error => {
+        setNotification('Error: ' + name + ' does not exist on the server')
+        setTimeout(() => {
+          setNotification(null)
+        }, 3000)
+        console.log('fail')
       })
+
   }
 }
 

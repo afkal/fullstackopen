@@ -18,8 +18,8 @@ const App = () => {
     personService
       .getAll()
       .then(response => {
-        setPersons(response.data)
-        setVisible(response.data)
+        setPersons(response)
+        setVisible(response)
       })
   }, [])
 
