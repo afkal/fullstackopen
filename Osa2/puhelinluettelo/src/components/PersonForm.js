@@ -1,7 +1,7 @@
 import React from 'react'
 import personService from '../services/persons'
 
-const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, setVisible}) => {
+const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, setVisible, setNotification}) => {
 
   const handleNameChange = (event) => {
     //console.log(event.target.value)
@@ -43,12 +43,13 @@ const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, set
         personService
           .update(currentId, personObject)
           .then(response => {
-
             setPersons(persons.map(person => person.id !== currentId ? person : response.data))
+            setVisible(persons.map(person => person.id !== currentId ? person : response.data))
             console.log('updated database and view')
+            setNotification('Updated ' + response.data.name)
             setTimeout(() => {
-              setVisible(persons.map(person => person.id !== currentId ? person : response.data))
-            }, 100)
+              setNotification(null)
+            }, 3000)
 
             console.log(response.data)
           })
@@ -65,6 +66,10 @@ const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, set
         .then(response => {
           setPersons(persons.concat(response.data))
           setVisible(persons.concat(response.data))
+          setNotification('Added ' + response.data.name)
+          setTimeout(() => {
+            setNotification(null)
+          }, 3000)
         })
     }
   }
