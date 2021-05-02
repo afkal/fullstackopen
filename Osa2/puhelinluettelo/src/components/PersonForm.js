@@ -69,6 +69,12 @@ const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, set
           setTimeout(() => {
             setNotification(null)
           }, 3000)
+        }).catch(error => {
+          setNotification('Error: operation failed')
+          setTimeout(() => {
+            setNotification(null)
+          }, 3000)
+          console.log('fail')
         })
     }
   }
