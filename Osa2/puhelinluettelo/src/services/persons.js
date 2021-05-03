@@ -1,6 +1,6 @@
 import axios from 'axios'
-//const baseUrl = 'http://localhost:3001/persons'
-const baseUrl = 'http://localhost:8888/trailway_new/twbe/public/index.php/persons/'
+const baseUrl = '/api/persons'
+//const baseUrl = 'https://hidden-wave-38698.herokuapp.com/'
 
 const getAll = () => {
 
