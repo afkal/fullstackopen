@@ -12,8 +12,9 @@ const getAll = () => {
   }
 
   const request = axios.get(baseUrl)
-  //return request.then(response => response.data)
-  return request.then(response => response.data.concat(fakeContact))
+  return request.then(response => response.data)
+  // Concat Fake contact for debuggin purposes
+  //return request.then(response => response.data.concat(fakeContact))
 
 }
 

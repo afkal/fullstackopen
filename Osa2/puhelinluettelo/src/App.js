@@ -4,6 +4,7 @@ import PersonForm from './components/PersonForm'
 import Filter from './components/Filter'
 import personService from './services/persons'
 import Notification from './components/Notification'
+import Error from './components/Error'
 
 const App = () => {
 
@@ -12,6 +13,7 @@ const App = () => {
   const [ newNumber, setNewNumber ] = useState('')
   const [ visible, setVisible ] = useState([])
   const [ notification, setNotification ] = useState(null)
+  const [ error, setError ] = useState(null)
 
   useEffect(() => {
     console.log('using personService via Effect')
@@ -27,6 +29,7 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <Notification message={notification}/>
+      <Error message={error}/>
       <Filter persons={persons} setVisible={setVisible}/>
 
       <h3>Add a new</h3>
@@ -39,6 +42,7 @@ const App = () => {
         setNumber={setNewNumber}
         setVisible={setVisible}
         setNotification={setNotification}
+        setError={setError}
       />
 
       <h3>Numbers</h3>

@@ -1,7 +1,7 @@
 import React from 'react'
 import personService from '../services/persons'
 
-const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, setVisible, setNotification}) => {
+const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, setVisible, setNotification, setError}) => {
 
   const handleNameChange = (event) => {
     //console.log(event.target.value)
@@ -70,11 +70,13 @@ const PersonForm = ({persons, setPersons,  name, setName, number, setNumber, set
             setNotification(null)
           }, 3000)
         }).catch(error => {
-          setNotification('Error: operation failed')
+          console.log(error.response.data)
+          //setNotification('Error: operation failed')
+          setError(error.response.data.error)
           setTimeout(() => {
-            setNotification(null)
+            setError(null)
           }, 3000)
-          console.log('fail')
+          //console.log('fail')
         })
     }
   }
