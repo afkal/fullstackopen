@@ -1,5 +1,5 @@
 // Tavoitetila
-//const app = require('./app') // varsinainen Express-sovellus
+const app = require('./app') // varsinainen Express-sovellus
 const http = require('http')
 const config = require('./utils/config')
 const logger = require('./utils/logger')
@@ -8,7 +8,7 @@ const middleware = require('./utils/middleware')
 //require('dotenv').config()
 //const http = require('http')
 const express = require('express')
-const app = express()
+//const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 
