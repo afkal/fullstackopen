@@ -1,5 +1,12 @@
-require('dotenv').config()
+// Tavoitetila
+//const app = require('./app') // varsinainen Express-sovellus
 const http = require('http')
+const config = require('./utils/config')
+const logger = require('./utils/logger')
+
+const middleware = require('./utils/middleware')
+//require('dotenv').config()
+//const http = require('http')
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -38,7 +45,7 @@ app.post('/api/blogs', (request, response) => {
     })
 })
 
-const PORT = process.env.PORT || 3003
+const PORT = config.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
