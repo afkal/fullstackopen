@@ -29,14 +29,14 @@ const mostBlogs = (blogs) => {
     if(!authorTable[item.author]) authorTable[item.author] = 1
     else authorTable[item.author]=authorTable[item.author]+1
   })
-  console.log(authorTable)
+  //console.log(authorTable)
 
   // Loop through authors table
   const mostAuthor = Object.entries(authorTable).reduce(function(previous, current) {
     return (previous[1] > current[1]) ? previous : current
   })[0] //returns object
-  console.log(mostAuthor)
-  console.log(authorTable[mostAuthor])
+  //console.log(mostAuthor)
+  //console.log(authorTable[mostAuthor])
 
   const result = {
     author: mostAuthor,
@@ -45,6 +45,31 @@ const mostBlogs = (blogs) => {
   return result
 }
 
+const mostLikes = (blogs) => {
+
+  var authorTable = []
+
+  // Create authors vs sum of blogs table
+  blogs.forEach((item) => {
+    if(!authorTable[item.author]) authorTable[item.author] = item.likes
+    else authorTable[item.author]=authorTable[item.author]+item.likes
+  })
+  //console.log(authorTable)
+
+  // Loop through authors table
+  const mostAuthor = Object.entries(authorTable).reduce(function(previous, current) {
+    return (previous[1] > current[1]) ? previous : current
+  })[0] //returns object
+  //console.log(mostAuthor)
+  //console.log(authorTable[mostAuthor])
+
+  const result = {
+    author: mostAuthor,
+    likes: authorTable[mostAuthor]
+  }
+  return result
+}
+
 module.exports = {
-  dummy, totalLikes, favoriteBlog, mostBlogs
+  dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes
 }
