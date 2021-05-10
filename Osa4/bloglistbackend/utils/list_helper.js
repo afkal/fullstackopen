@@ -20,6 +20,31 @@ const favoriteBlog = (blogs) => {
   return maxLikes
 }
 
+const mostBlogs = (blogs) => {
+
+  var authorTable = []
+
+  // Create authors vs sum of blogs table
+  blogs.forEach((item) => {
+    if(!authorTable[item.author]) authorTable[item.author] = 1
+    else authorTable[item.author]=authorTable[item.author]+1
+  })
+  console.log(authorTable)
+
+  // Loop through authors table
+  const mostAuthor = Object.entries(authorTable).reduce(function(previous, current) {
+    return (previous[1] > current[1]) ? previous : current
+  })[0] //returns object
+  console.log(mostAuthor)
+  console.log(authorTable[mostAuthor])
+
+  const result = {
+    author: mostAuthor,
+    blogs: authorTable[mostAuthor]
+  }
+  return result
+}
+
 module.exports = {
-  dummy, totalLikes, favoriteBlog
+  dummy, totalLikes, favoriteBlog, mostBlogs
 }

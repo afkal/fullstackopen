@@ -85,7 +85,7 @@ describe('total likes', () => {
 
 describe('favourite blog', () => {
 
-  test('when list has only one blog equals the likes of that', () => {
+  test('when list has only one blog finds the most liked blog', () => {
     const expected =
       {
         _id: '5a422aa71b54a676234d17f8',
@@ -99,7 +99,7 @@ describe('favourite blog', () => {
     expect(result).toEqual(expected)
   })
 
-  test('when list has multiple blogs equals the likes of that', () => {
+  test('when list has multiple blogs finds the most liked blog', () => {
     const expected =
     {
       _id: '5a422b3a1b54a676234d17f9',
@@ -110,6 +110,19 @@ describe('favourite blog', () => {
       __v: 0
     }
     const result = listHelper.favoriteBlog(blogs)
+    expect(result).toEqual(expected)
+  })
+})
+
+describe('most blogs', () => {
+
+  test('when list has multiple blogs finds the correct author', () => {
+    const expected =
+    {
+      author: 'Robert C. Martin',
+      blogs: 3
+    }
+    const result = listHelper.mostBlogs(blogs)
     expect(result).toEqual(expected)
   })
 })
