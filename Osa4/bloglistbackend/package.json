@@ -14,7 +14,7 @@
   "devDependencies": {
     "eslint": "^7.26.0",
     "jest": "^26.6.3",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.20"
   },
   "dependencies": {
     "cors": "^2.8.5",
